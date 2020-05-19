@@ -1,0 +1,32 @@
+on: [push]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    name: Setup Project
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Build Directory
+        run: mkdir -p ./build/windows/
+      
+  test-install:
+    needs: setup
+    runs-on: ubuntu-latest
+    name: Test Installation
+    steps:
+      - name: Run Export
+        uses: ./
+        id: version-check
+        run: |
+          godot --version
+          godot --path ./samples/csharp-sample --export "Windows" ./build/windows/sample.exe
+
+  # publish:
+  #   needs: test-install
+  #   runs-on: ubuntu-latest
+  #   name: Publish Docker Image
+  #   steps:
+  #     - name: Build and push Docker images
+  #       uses: docker/build-push-action@v1.1.0
+

@@ -38,6 +38,7 @@ RUN mkdir ~/.cache/ \
 # unzip, then rename executable
 RUN unzip /tmp/Godot_v${GODOT_VERSION}-stable_mono_linux_headless_64.zip -d /usr/local/bin/ \
     && mv /usr/local/bin/Godot_v3.2.1-stable_mono_linux_headless_64/* /usr/local/bin/ \
+    && ln -s /usr/local/bin/Godot_v3.2.1-stable_mono_linux_headless.64 /usr/local/bin/godot \
     && rm -rf /usr/local/bin/Godot_v3.2.1-stable_mono_linux_headless_64/
 
 # unzip, then rename templates directory
