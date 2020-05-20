@@ -3,24 +3,12 @@ on: [push]
 jobs:
   setup:
     runs-on: ubuntu-latest
-    name: Setup Project
+    name: Checkout Source
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Build Directory
-        run: mkdir -p ./build/windows/
-      
-  test-install:
-    needs: setup
-    runs-on: ubuntu-latest
-    name: Test Installation
-    steps:
-      - name: Run Export
-        uses: ./
-        id: version-check
-        run: |
-          godot --version
-          godot --path ./samples/csharp-sample --export "Windows" ./build/windows/sample.exe
+
+  
 
   # publish:
   #   needs: test-install
