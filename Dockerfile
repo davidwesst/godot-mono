@@ -25,8 +25,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     mono-complete
 
 # get the application and the export templates
-ADD https://downloads.tuxfamily.org/godotengine/3.2.1/mono/Godot_v3.2.1-stable_mono_linux_headless_64.zip /tmp/
-ADD https://downloads.tuxfamily.org/godotengine/3.2.1/mono/Godot_v3.2.1-stable_mono_export_templates.tpz /tmp/
+ADD https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/mono/Godot_v${GODOT_VERSION}-stable_mono_linux_headless_64.zip /tmp/
+ADD https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/mono/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz /tmp/
 
 # make required directories
 RUN mkdir ~/.cache/ \
@@ -35,9 +35,9 @@ RUN mkdir ~/.cache/ \
 
 # unzip, then rename executable
 RUN unzip /tmp/Godot_v${GODOT_VERSION}-stable_mono_linux_headless_64.zip -d /usr/local/bin/ \
-    && mv /usr/local/bin/Godot_v3.2.1-stable_mono_linux_headless_64/* /usr/local/bin/ \
-    && ln -s /usr/local/bin/Godot_v3.2.1-stable_mono_linux_headless.64 /usr/local/bin/godot \
-    && rm -rf /usr/local/bin/Godot_v3.2.1-stable_mono_linux_headless_64/
+    && mv /usr/local/bin/Godot_v${GODOT_VERSION}-stable_mono_linux_headless_64/* /usr/local/bin/ \
+    && ln -s /usr/local/bin/Godot_v${GODOT_VERSION}-stable_mono_linux_headless.64 /usr/local/bin/godot \
+    && rm -rf /usr/local/bin/Godot_v${GODOT_VERSION}-stable_mono_linux_headless_64/
 
 # unzip, then rename templates directory
 RUN unzip /tmp/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz -d ~/.local/share/godot/templates/${GODOT_VERSION}.stable.mono/ \
