@@ -4,7 +4,7 @@ on:
     branches:
       - master
     tags:
-      - v3*
+      - 3*
 
 jobs:
   build-and-push:
