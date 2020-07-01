@@ -23,7 +23,7 @@ jobs:
           tags: latest
       - name: Build and Push Latest (Tagged)
         uses: docker/build-push-action@v1
-        if: contains(github.ref, "tags")
+        if: contains( github.ref, 'tags' )
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
