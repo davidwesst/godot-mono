@@ -1,7 +1,7 @@
 FROM ubuntu:focal
 
 # environment variables
-ENV GODOT_VERSION "3.2.1"
+ENV GODOT_VERSION "3.2.2"
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 
 # setup core dependendies
